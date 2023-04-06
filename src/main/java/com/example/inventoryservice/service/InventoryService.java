@@ -1,6 +1,7 @@
 package com.example.inventoryservice.service;
 
 import com.example.inventoryservice.service.model.ItemDto;
+import org.springframework.data.crossstore.ChangeSetPersister;
 
 public interface InventoryService {
 

@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.NoSuchElementException;
+
 @Component
 @RequiredArgsConstructor
 public class InventoryServiceImpl implements InventoryService {
@@ -15,7 +17,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public ItemDto getItemByName(String identifier) {
-        Item item = itemRepository.findByItemName(identifier);
+        Item item = itemRepository.findByItemName(identifier).orElseThrow(NoSuchElementException::new);
 
         ItemDto itemDto = ItemDto.builder().build();
 
